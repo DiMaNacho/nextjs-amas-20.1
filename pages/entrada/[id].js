@@ -1,16 +1,25 @@
 import { useRouter } from "next/router";
 
-const EntradaItem = () => {
-  // const router = useRouter();
-  // const { id } = router.query;
+// Constantes
+const API = "http://tenfield.com.uy/wp-json/wp/v2/posts/";
 
-  const {
-    query: { id },
-  } = useRouter();
+export const getServerSideProps = async ({ query: { id } }) => {
+  const respuesta = await fetch(API + id);
+  const data = await respuesta.json();
 
+  console.log("data", data);
+
+  return {
+    props: { post: data }, // will be passed to the page component as props
+  };
+};
+
+const EntradaItem = ({ post }) => {
   return (
     <>
-      <div className="EntradaItem">Esta página tiene el ID: {id}</div>
+      <div className="EntradaItem">
+        <h1>{post.title.rendered}</h1>
+      </div>
 
       {/* Estilos */}
       <style jsx>{`

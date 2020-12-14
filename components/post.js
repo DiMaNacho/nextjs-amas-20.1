@@ -24,7 +24,7 @@ const Post = ({ id, thumb, autor, titulo, fecha, desc, link, slug }) => (
           className="descripcion"
           dangerouslySetInnerHTML={{ __html: useTruncate(desc, 20, "...") }}
         />
-        <Link href={`post/${slug}`}>
+        <Link href={`entrada/${id}`}>
           <a className="btn">Leer más</a>
         </Link>
       </div>
