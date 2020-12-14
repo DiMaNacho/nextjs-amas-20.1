@@ -3,7 +3,7 @@
 // Constantes
 const API = "http://tenfield.com.uy/wp-json/wp/v2/posts/752288";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const respuesta = await fetch(API);
   const data = await respuesta.json();
 
